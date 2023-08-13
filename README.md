@@ -15,4 +15,4 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-- [APK Link]([https://docs.flutter.dev/get-started/codelab](https://drive.google.com/file/d/1b9ZW6AVPwaVNrlE-vn6AZFTW7f48zv0a/view?usp=sharing)https://drive.google.com/file/d/1b9ZW6AVPwaVNrlE-vn6AZFTW7f48zv0a/view?usp=sharing)
+- [APK Link](https://drive.google.com/file/d/1b9ZW6AVPwaVNrlE-vn6AZFTW7f48zv0a/view?usp=sharing)
