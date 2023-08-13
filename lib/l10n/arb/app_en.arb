@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "paymentTo": "Payment to red bus\n(redbus@axis)",
+  "paymentVia": "Payment via Billdesk",
+  "bankAccount": "Your Bank .... 6321",
+  "proceedToPayBtnText": "Proceed to pay",
+  "partnershipLabelText": "IN PARTNERSHIP WITH YOUR BANK",
+  "iciciBank": "ICICI Bank",
+  "enterUpiPin": "Enter Upi Pin",
+  "showBtnLabel": "Show",
+  "rupeeSymbol": "\u20b9 ",
+  "doneBtnText": "Done"
+}

@@ -1,9 +1,13 @@
+import 'package:curie_money_dev/l10n/l10n.dart';
 import 'package:curie_money_dev/utils/utils.dart';
+import 'package:curie_money_dev/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+  FirstScreen({super.key});
+
+  final TextEditingController _amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +30,27 @@ class FirstScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  child:
-                      CircleAvatar(radius: 28, backgroundColor: Colors.black),
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundColor: Colors.black87,
+                    child: Icon(Icons.person, color: Colors.orange),
+                  ),
                 ),
                 Icon(Icons.chevron_right, color: Colors.white),
                 CircleAvatar(
                   radius: 30,
-                  child:
-                      CircleAvatar(radius: 28, backgroundColor: Colors.black),
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundColor: Colors.black87,
+                    child: Icon(Icons.bus_alert_outlined, color: Colors.orange),
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 12.toResponsiveHeight(context)),
             Text(
               textAlign: TextAlign.center,
-              'Payment to red bus\n(redbus@axis)',
+              context.l10n.paymentTo,
               style:
                   context.textTheme.bodyMedium?.copyWith(color: Colors.white),
             ),
@@ -49,13 +59,15 @@ class FirstScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '\u20b9 ',
+                  context.l10n.rupeeSymbol,
                   style: context.textTheme.bodyLarge?.copyWith(
                     color: Colors.white,
                   ),
                 ),
                 IntrinsicWidth(
                   child: TextField(
+                    controller: _amountController,
+                    keyboardType: TextInputType.number,
                     style: context.textTheme.displayLarge?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
@@ -74,7 +86,7 @@ class FirstScreen extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.center,
-              'Payment via Billdesk',
+              context.l10n.paymentVia,
               style:
                   context.textTheme.bodyMedium?.copyWith(color: Colors.white),
             ),
@@ -90,27 +102,40 @@ class FirstScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const Row(children: [
-                    Icon(Icons.credit_card_rounded),
-                    Text('Your Bank .... 6321'),
-                    Spacer(),
-                    Icon(Icons.keyboard_arrow_down),
+                  Row(children: [
+                    const Icon(
+                      Icons.credit_card_rounded,
+                      color: Colors.black54,
+                    ),
+                    SizedBox(width: 7.toResponsiveWidth(context)),
+                    Text(
+                      context.l10n.bankAccount,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.keyboard_arrow_down),
                   ]),
                   SizedBox(height: 30.toResponsiveHeight(context)),
                   SizedBox(
                     width: context.screenWidth,
-                    child: MaterialButton(
+                    child: PrimaryButton(
                       color: AppColors.primaryBlue,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                      textColor: Colors.white,
-                      onPressed: () {},
-                      child: const Text('Proceed to pay'),
+                      child: Text(context.l10n.proceedToPayBtnText),
+                      onPressed: () => _amountController.text.isEmpty
+                          ? null
+                          : context.push(
+                              SecondScreen(
+                                amount: double.parse(_amountController.text),
+                              ),
+                            ),
                     ),
                   ),
                   SizedBox(height: 12.toResponsiveHeight(context)),
                   Text(
-                    'IN PARTNERSHIP WITH YOUR BANK',
+                    context.l10n.partnershipLabelText,
                     style: context.textTheme.labelSmall?.copyWith(
                       color: Colors.grey.shade500,
                     ),
